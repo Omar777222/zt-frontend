@@ -1,0 +1,127 @@
+:root {
+  --ink: #18324a;
+  --paper: #f3f6f8;
+  --surface: #ffffff;
+  --signal: #0e7c66;
+  --danger: #b42318;
+  --line: #d3dce3;
+  --muted: #5b6b7a;
+  --font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+}
+h1, h2 { margin: 0; line-height: 1.2; }
+.muted { color: var(--muted); }
+
+/* Botones */
+.btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn:focus-visible, .field__input:focus-visible { outline: 3px solid var(--signal); outline-offset: 2px; }
+.btn--primary { background: var(--ink); color: #fff; width: 100%; }
+.btn--primary:hover:not(:disabled) { background: #0f2436; }
+.btn--ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.5); }
+
+/* Campos */
+.field { display: grid; gap: 0.35rem; margin-bottom: 1.1rem; }
+.field__label { font-weight: 600; font-size: 0.95rem; }
+.field__input {
+  font: inherit;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+/* Alertas */
+.alert { padding: 0.75rem 1rem; border-radius: 6px; margin-bottom: 1rem; font-size: 0.95rem; }
+.alert--error { background: #fdeceb; color: var(--danger); border-left: 4px solid var(--danger); }
+
+/* Login */
+.login { display: grid; grid-template-columns: 1fr 1fr; min-height: 100%; }
+.login__form-side { display: grid; place-items: center; padding: 2rem; background: var(--surface); }
+.login__form { width: 100%; max-width: 360px; }
+.login__title { font-size: 2rem; margin-bottom: 0.4rem; }
+.login__subtitle { color: var(--muted); margin: 0 0 1.75rem; }
+.login__info-side {
+  background: var(--ink);
+  color: #fff;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+.login__info-side h2 { font-size: 1.25rem; font-weight: 600; }
+
+/* Recorrido de red: el elemento distintivo de la interfaz */
+.netpath { list-style: none; margin: 0; padding: 0; max-width: 340px; }
+.netpath__hop {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  display: grid;
+}
+.netpath__hop span { font-size: 0.85rem; opacity: 0.75; }
+.netpath__link {
+  margin-left: 1.25rem;
+  padding: 0.6rem 0 0.6rem 1.25rem;
+  border-left: 2px dashed #5fd3b8;
+  color: #5fd3b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Barra superior */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: var(--ink);
+  color: #fff;
+}
+.navbar__brand { font-weight: 700; }
+.navbar__right { display: flex; align-items: center; gap: 1rem; }
+
+/* Dashboard */
+.dashboard { max-width: 1040px; margin: 0 auto; padding: 2rem 1.5rem; }
+.dashboard__title { font-size: 1.75rem; margin-bottom: 1.5rem; }
+.dashboard__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 1.25rem 1.5rem; }
+.panel--wide { grid-column: 1 / -1; border-top: 4px solid var(--signal); }
+.panel__title { font-size: 1.05rem; margin-bottom: 1rem; }
+
+.checks { margin: 0; padding-left: 1.4rem; display: grid; gap: 0.75rem; }
+.checks__item { padding-left: 0.4rem; }
+.checks__item::marker { color: var(--signal); font-weight: 700; }
+.checks__item strong { display: block; }
+.checks__item span { color: var(--muted); font-size: 0.95rem; }
+
+dl { margin: 0; }
+.info-row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--line); }
+.info-row:last-child { border-bottom: 0; }
+.info-row dt { color: var(--muted); }
+.info-row dd { margin: 0; font-weight: 600; text-align: right; word-break: break-all; }
+
+@media (max-width: 760px) {
+  .login { grid-template-columns: 1fr; }
+  .login__info-side { padding: 2rem 1.5rem; }
+  .dashboard__grid { grid-template-columns: 1fr; }
+}
